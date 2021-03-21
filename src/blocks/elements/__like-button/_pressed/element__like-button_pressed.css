@@ -1,0 +1,12 @@
+.elements__like-button_pressed {
+  background: url(../../../../images/like-button_pressed.svg);
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+.elements__like-button_pressed:hover {
+  opacity: .6;
+}
+

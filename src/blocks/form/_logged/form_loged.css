@@ -1,0 +1,17 @@
+.form_logged{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    max-width: 430px;
+    height: 330px;
+}
+
+@media screen and (max-width: 510px){
+    .form_logged{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        max-width: 330px;
+        height: 330px;
+    }
+}

@@ -1,0 +1,28 @@
+.profile__sub-info {
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0;
+  grid-area: subinfo;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden; /*так же добавил стили чтобы текст скрывался, а то рушится верстка немного при вводе большого текста*/
+}
+
+
+@media screen and (max-width: 768px) {
+  .profile__sub-info {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .profile__sub-info {
+    margin-left: 15px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+

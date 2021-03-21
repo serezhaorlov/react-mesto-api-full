@@ -1,0 +1,25 @@
+.form__name {
+  border: none;
+  border-bottom: 1px solid grey;
+  max-width: 358px;
+  margin: 0 36px;
+  font-family: 'Inter', 'Arial', sans-serif;
+}
+
+.form__name:last-of-type {
+  margin: 30px 36px 0;
+}
+
+
+
+@media screen and (max-width: 425px) {
+  .form__name {
+    max-width: 238px;
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+
+}
+
+

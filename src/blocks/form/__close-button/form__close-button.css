@@ -1,0 +1,33 @@
+.form__close-button {
+  position: absolute;
+  top: -40px;
+  left: 425px;
+  padding: 20px;
+  background: url(../../../images/closeIcon.svg);
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+
+.form__close-button:hover {
+  opacity: .6;
+}
+
+.form__close-button:active {
+  outline: none;
+}
+
+.form__close-button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 510px) {
+  .form__close-button {
+    top: -40px;
+    left: 270px;
+    padding: 13px;
+  }
+
+}

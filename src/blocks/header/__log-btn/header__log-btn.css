@@ -1,0 +1,13 @@
+.header__log-btn{
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+    text-decoration: none;
+    margin: 0 0 0 5px;
+}
+
+.header__log-btn:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}

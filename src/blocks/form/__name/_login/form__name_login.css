@@ -1,0 +1,7 @@
+.form__name_login{
+    min-width: 358px;
+    outline: none;
+    background-color: black;
+    border-bottom: 2px solid #CCCCCC;
+    color: #fff;
+}

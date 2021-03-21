@@ -1,0 +1,14 @@
+.popup-pic__image {
+  max-width: 75vw;
+  max-height: 75vh;
+  object-fit: contain;
+  align-self: center;
+}
+
+
+
+@media screen and (max-width: 510px) {
+  .popup-pic__image {
+    width: 75vw;
+  }
+}

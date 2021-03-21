@@ -1,0 +1,35 @@
+.profile__pic-edit { /*переделал*/
+    width: 120px;
+    height: 120px;
+    border-radius: 45%;
+    border: none;
+    padding: 40px;
+    position: absolute;
+    top: 0;
+    left: auto;
+    background:#000 url(../../../images/buttonEditAvatar.svg) no-repeat center center;
+    opacity: 0;
+
+}
+
+.profile__pic-edit:hover {
+  opacity: 0.8;
+  transition: .2s, ease-in-out, linear; /*добавил чтобы было красиво*/
+  cursor: pointer;
+}
+
+.profile__pic-edit:active {
+  outline: none;
+}
+
+.profile__pic-edit:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__pic-edit {
+    top: 0;
+    left: auto;
+  }
+}
+

@@ -1,0 +1,28 @@
+.elements__delete-button {
+  align-self: flex-end;
+  position: absolute;
+  margin-right: 16px;
+  margin-top: 10px;
+  padding: 11px;
+  background: url(../../../images/Trash.svg);
+  background-position: center;
+  cursor: pointer;
+  border: none;
+  background-repeat: no-repeat;
+}
+
+
+.elements__delete-button:hover {
+  opacity: .6;
+}
+
+
+.elements__delete-button:active {
+  outline: none;
+  transform: scale(1.2);
+  transition: all 0.3s ease-out;
+}
+
+.elements__delete-button:focus {
+  outline: none;
+}

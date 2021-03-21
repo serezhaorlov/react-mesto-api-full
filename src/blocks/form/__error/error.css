@@ -1,0 +1,10 @@
+.form__error {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  max-width: 358px;
+  color: #FF0000;
+  margin: 5px 35px 0;
+}

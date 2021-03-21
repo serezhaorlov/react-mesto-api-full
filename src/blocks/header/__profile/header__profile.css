@@ -1,0 +1,9 @@
+.header__profile{
+    text-decoration: none;
+    color: #fff;
+    height: 20px;
+}
+
+.header__profile:hover{
+    opacity: 0.8;
+}

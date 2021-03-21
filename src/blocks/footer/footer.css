@@ -1,0 +1,19 @@
+.footer {
+  margin: 0 199px 60px;
+}
+
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 0 85px 60px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .footer {
+    margin: 0 19px 60px;
+  }
+}
+
+
+/*ho-ho-ho it's easter egg*/
