@@ -31,9 +31,12 @@ function AddPlacePopup({ onClose, isOpened, onAddCard }) {
     }
     
     return (
-        <PopupWithForm namePopup="popup popup-add" nameForm="form form-add" title="Новое место" button="Сохранить" 
-            buttonLoad="Сохранение..." isOpened = { isOpened } onClose = { onClose } onSubmit={ handleSubmit }
-            closeAllPopupsOverlay={ closeAllPopupsOverlay } >
+        <PopupWithForm 
+            namePopup="popup popup-add" nameForm="form form-add" title="Новое место"
+            button="Сохранить" buttonLoad="Сохранение..." isOpened = { isOpened } 
+            onClose = { onClose } onSubmit={ handleSubmit }
+            closeAllPopupsOverlay={ closeAllPopupsOverlay }
+        >
             <>
             <input type="text" required minLength={2} maxLength={30} id="nameadd" name="name" placeholder="Название" className="form__name form__name_top_add-name" onChange={handleChangeName}/>
             <span id="nameadd-error" className="form__error" />

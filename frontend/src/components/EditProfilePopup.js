@@ -36,16 +36,18 @@ function EditProfilePopup ({ onClose, isOpened, onUpdateUser }) {
   }
     
   return (
-      <PopupWithForm namePopup="popup" nameForm="form" title="Редактировать профиль" button="Сохранить" 
-      buttonLoad="Сохранение..." isOpened = { isOpened } onClose = { onClose } onSubmit={ handleSubmit }
-      closeAllPopupsOverlay={ closeAllPopupsOverlay } >
-      <>
-        <input type="text" required minLength={2} maxLength={40} id="name" name="name" placeholder="Имя" className="form__name form__name_top" value={name || '' } onChange={ handleChangeName }/>
-        <span id="name-error" className="form__error" />
-        <input type="text" required minLength={2} maxLength={200} id="about" name="about" placeholder="О себе" className="form__name form__name_bottom" value={description || ''} onChange={ handleChangeDescription }/>
-        <span id="about-error" className="form__error" />
-      </>
-      </PopupWithForm>
+    	<PopupWithForm
+            namePopup="popup" nameForm="form" title="Редактировать профиль"
+            button="Сохранить" buttonLoad="Сохранение..." isOpened = { isOpened }
+            onClose = { onClose } onSubmit={ handleSubmit } closeAllPopupsOverlay={ closeAllPopupsOverlay } 
+        >
+      	<>
+        	<input type="text" required minLength={2} maxLength={40} id="name" name="name" placeholder="Имя" className="form__name form__name_top" value={name || '' } onChange={ handleChangeName }/>
+        	<span id="name-error" className="form__error" />
+        	<input type="text" required minLength={2} maxLength={200} id="about" name="about" placeholder="О себе" className="form__name form__name_bottom" value={description || ''} onChange={ handleChangeDescription }/>
+        	<span id="about-error" className="form__error" />
+      	</>
+      	</PopupWithForm>
     )
 } 
 
