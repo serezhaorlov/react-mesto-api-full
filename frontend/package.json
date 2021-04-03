@@ -19,7 +19,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy": "npm run build && scp -r ./build/* seo@178.154.210.113:/home/seo/mesto-react/build" 
+    "deploy": "npm run build && scp -r ./build/* mesto-o@130.193.58.212:/home/mesto-o/mesto-react/build" 
   },
   "eslintConfig": {
     "extends": [

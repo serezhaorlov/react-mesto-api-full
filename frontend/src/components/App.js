@@ -36,41 +36,92 @@ function App () {
     success: true
   });
 
-  const [loggedIn, setLoggedIn] = React.useState(true); //
+  const [loggedIn, setLoggedIn] = React.useState(false); //
   const [email, setEmail] = React.useState('');
+
   const history = useHistory();
 
   React.useEffect(() => {
-    auth.checkToken()
+    const token = localStorage.getItem("jwt");
+    if(!token) {
+        return console.log('Нет jwt токена');
+    } else {
+        api.setHeaders(token);
+
+        Promise.all([api.getCards(), api.getUser()])
+            .then(([cardsData, userData]) => {
+                setCards(cardsData);
+                setCurrentUser(userData);
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+  }, [loggedIn]);
+
+  const handleRegister = (email, password) => {
+    auth.register(email, password)
+        .then(() => {
+                setLoggedIn(true);
+                setTooltip({isOpened: true, success: true});
+                history.push("/signin");
+        })
+        .catch((err) => {
+          setTooltip({isOpened: true, success: false});
+            if (err === "Error 400") {
+                return console.log("Неверно заполнили поле");
+            }
+            if (err === "Error 409") {
+                return console.log("Пользователь существует");
+            }
+            console.log(err)
+        });
+  };
+
+  const handleLogin = (email, password) => {
+    auth.login(email, password)
+        .then((res) => {
+                localStorage.setItem("jwt", res.token);
+                setLoggedIn(true);
+                setEmail(email);
+                history.push("/");
+        })
+        .catch((err) => {
+            if (err === "Error 400") {
+                return console.log("Неверно заполнили поле");
+            }
+            if (err === "Error 401") {
+                return console.log("Неправильные почта/пароль");
+            }
+            console.log(err);
+        });
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("jwt");
+    setLoggedIn(false);
+    history.push("/signin");
+  };
+
+const tokenCheck = () => {
+  const jwt = localStorage.getItem("jwt");
+  if (jwt) {
+    auth.checkToken(jwt)
       .then((res) => {
-        console.log(res.data);
-        res.data ? setLoggedIn(true) : setLoggedIn(false); //
-        setEmail(res.data.email);
+        res ? setLoggedIn(true) : setLoggedIn(false); //
+        setEmail(res.email);
         history.push('/');
       })
       .catch(err => console.log(err));
+    }
+  };
+
+  React.useEffect(() => {
+    tokenCheck();
   }, [loggedIn]);
 
-  React.useEffect(()=> { //
-    api.getUser()
-    .then((profile)=>{
-      setCurrentUser(profile)
-    }).catch((err)=>{
-      console.log(err)
-    })
-  }, []);
-
-  React.useEffect(()=> { //
-    api.getCards()
-    .then((cards)=>{
-      setCards(cards)
-    }).catch((err)=>{
-      console.log(err)
-    })
-  }, []);
-
   function handleCardLike(card) {
-    const isLiked = card.likes.some(i => i._id === currentUser._id); //
+    const isLiked = card.likes.some(i => i === currentUser._id); //
     
     api.likesChanges(card._id, !isLiked)
         .then((newCard) => {
@@ -91,9 +142,7 @@ function App () {
           }).catch((err)=>{
             console.log(err)
           });
-  } 
-
-
+  }
 
   const handleEditAvatarClick = () => { 
     setIsEditAvatarPopupOpen(true) //
@@ -149,47 +198,6 @@ function App () {
     })
   }
 
-  function handleLogin (data) {
-    auth.login({
-        password: data.password,
-        email: data.email
-    })
-    .then((res) => {
-        localStorage.setItem('jwt', res.token);
-        setLoggedIn(true);
-        history.push('/')
-    })
-    .catch((err) => console.log(err))
-}
-  // обработчика сабмита выхода пользователя
-  function handleLogout () {
-    localStorage.removeItem('jwt');
-    setLoggedIn(false);
-    history.push('/signin');
-  }
-
-  // обработчик сабмита регистрации
-  function handleRegister (data) {
-    auth.register({
-      password: data.password,
-      email: data.email
-    })
-    .then(() => {
-        setTooltip({
-            isOpen: true,
-            success: true
-        });
-        history.push('/');
-    })
-    .catch((err) => {
-        console.log(err);
-        setTooltip({
-            isOpen: true,
-            success: false
-        });
-    })
-}
-
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false) //
     setIsEditProfilePopupOpen(false)
@@ -226,7 +234,7 @@ function App () {
 					cards = { cards }
 				/>
           <Route>
-            <Redirect to={`/${loggedIn ? '' : 'signin'}`} />
+            <Redirect to={`/${ loggedIn ? '' : 'signin'}` } />
           </Route>
 			</Switch>
             <Footer />

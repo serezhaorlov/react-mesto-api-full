@@ -4,46 +4,46 @@ class Auth {
         this._headers = options.headers;
     }
 
-    register (data) {
+    register(email, password) {
         return fetch(`${this._url}/signup`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                password: data.password,
-                email: data.email
+                email: email,
+                password: password,
             })
         }
         )
         .then((res) => res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`));
     }
 
-    login (data) {
+    login(email, password) {
         return fetch(`${this._url}/signin`, {
             method: 'POST',
             headers: this._headers,
             body: JSON.stringify({
-                password: data.password,
-                email: data.email
+                email: email,
+                password: password,
             })
         })
         .then((res) => res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`));
     }
 
-    checkToken () {
-        const jwt = localStorage.getItem('jwt');
+    checkToken(token) {
         return fetch(`${this._url}/users/me`, {
             method: 'GET',
             headers: {
                 ...this._headers,
-                "Authorization": `Bearer ${jwt}`
+                Accept: 'application/json',
+                Authorization: `Bearer ${token}`
             }
         })
         .then(res => res.ok ? res.json() : Promise.reject(`${res.status} ${res.statusText}`));
-    }    
+    }
 }
 
 const auth = new Auth({
-    baseUrl: 'https://auth.nomoreparties.co',
+    baseUrl: 'https://api.serezhaorlov.students.nomoredomains.club',
     headers: {
         "Content-Type": "application/json"
     }

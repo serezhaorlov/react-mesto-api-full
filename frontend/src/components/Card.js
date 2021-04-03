@@ -6,8 +6,8 @@ function Card ({card, onCardClick, onCardLike, onCardDelete}) {
     const user = React.useContext(CurrentUserContext);
     
     const { _id } = user;
-    const isOwn = card.owner._id === _id;
-    const isLiked = card.likes.some(i => i._id === _id);
+    const isOwn = card.owner === _id;
+    const isLiked = card.likes.some(i => i === _id);
 
     return (
         <li className="elements__item">
