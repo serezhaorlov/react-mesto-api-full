@@ -12,11 +12,16 @@ const {
 
 router.get('/users', getUsers);
 router.get('/users/me', getUser);
+<<<<<<< HEAD
 router.get('/users/:id', celebrate({
   params: Joi.object().keys({
     id: Joi.string().alphanum().length(24).hex(),
   }),
 }), getProfile);
+=======
+router.get('/users/:id', getProfile);
+/*По валидации, у меня вроде бы все написано было изначально, гет запросы мы же не валидируем*/
+>>>>>>> 3287ed780286a93bfcbdb9a3cb2d77b2180ffb45
 
 router.patch(
   '/users/me',
