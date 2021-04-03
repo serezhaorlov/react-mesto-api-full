@@ -13,6 +13,7 @@ const {
 router.get('/users', getUsers);
 router.get('/users/me', getUser);
 router.get('/users/:id', getProfile);
+/*По валидации, у меня вроде бы все написано было изначально, гет запросы мы же не валидируем*/
 
 router.patch(
   '/users/me',
